@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MyCPlus.Stack.Tests</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/StackDemo/StackDemo.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../expected/StackDemo.txt" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

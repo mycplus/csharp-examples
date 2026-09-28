@@ -1,0 +1,31 @@
+name: stack
+
+on:
+  push:
+    paths: ['data-structures/stack/**', '.github/workflows/stack.yml']
+  pull_request:
+    paths: ['data-structures/stack/**', '.github/workflows/stack.yml']
+
+defaults:
+  run:
+    working-directory: data-structures/stack
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Build (analyzer warnings are errors)
+        run: dotnet build Stack.slnx -c Release
+      - name: Tests
+        run: dotnet run --project tests/StackTests -c Release --no-build
+      - name: Demo prints the article's output
+        shell: bash
+        run: dotnet run --project src/StackDemo -c Release --no-build | diff --strip-trailing-cr - tests/expected/StackDemo.txt
