@@ -1,0 +1,31 @@
+name: prime-numbers
+
+on:
+  push:
+    paths: ['math/prime-numbers/**', '.github/workflows/prime-numbers.yml']
+  pull_request:
+    paths: ['math/prime-numbers/**', '.github/workflows/prime-numbers.yml']
+
+defaults:
+  run:
+    working-directory: math/prime-numbers
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Build (analyzer warnings are errors)
+        run: dotnet build Primes.slnx -c Release
+      - name: Tests
+        run: dotnet run --project tests/PrimesTests -c Release --no-build
+      - name: Demo prints the article's output
+        shell: bash
+        run: dotnet run --project src/Primes -c Release --no-build | diff --strip-trailing-cr - tests/expected/primes.txt

@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Primes/Primes.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/PrimesTests/PrimesTests.csproj" />
+  </Folder>
+</Solution>

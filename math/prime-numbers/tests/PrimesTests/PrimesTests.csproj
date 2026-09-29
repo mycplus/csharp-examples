@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MyCPlus.Primes.Tests</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/Primes/Primes.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../expected/primes.txt" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>
