@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MyCPlus.Sorting.Tests</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/InsertionSort/InsertionSort.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../expected/InsertionSort.txt" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

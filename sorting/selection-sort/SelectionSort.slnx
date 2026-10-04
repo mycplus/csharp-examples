@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/SelectionSort/SelectionSort.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SelectionSortTests/SelectionSortTests.csproj" />
+  </Folder>
+</Solution>

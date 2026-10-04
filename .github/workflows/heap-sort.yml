@@ -1,0 +1,31 @@
+name: heap-sort
+
+on:
+  push:
+    paths: ['sorting/heap-sort/**', '.github/workflows/heap-sort.yml']
+  pull_request:
+    paths: ['sorting/heap-sort/**', '.github/workflows/heap-sort.yml']
+
+defaults:
+  run:
+    working-directory: sorting/heap-sort
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Build (analyzer warnings are errors)
+        run: dotnet build HeapSort.slnx -c Release
+      - name: Tests against Array.Sort
+        run: dotnet run --project tests/HeapSortTests -c Release --no-build
+      - name: Program prints the article's output
+        shell: bash
+        run: dotnet run --project src/HeapSort -c Release --no-build | diff --strip-trailing-cr - tests/expected/HeapSort.txt

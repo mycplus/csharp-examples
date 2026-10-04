@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/HeapSort/HeapSort.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/HeapSortTests/HeapSortTests.csproj" />
+  </Folder>
+</Solution>
