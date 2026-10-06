@@ -1,0 +1,41 @@
+name: towers-of-hanoi
+
+on:
+  push:
+    paths: ['recursion/towers-of-hanoi/**', '.github/workflows/towers-of-hanoi.yml']
+  pull_request:
+    paths: ['recursion/towers-of-hanoi/**', '.github/workflows/towers-of-hanoi.yml']
+
+defaults:
+  run:
+    working-directory: recursion/towers-of-hanoi
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Build (analyzer warnings are errors)
+        run: dotnet build TowersOfHanoi.slnx -c Release
+      - name: Tests
+        run: dotnet run --project tests/TowersOfHanoiTests -c Release --no-build
+      - name: Listing prints the article's output
+        shell: bash
+        run: dotnet run --project src/TowersOfHanoi -c Release --no-build | diff --strip-trailing-cr - tests/expected/TowersOfHanoi.txt
+      - name: Pitfalls behave the way the article says
+        shell: bash
+        run: |
+          dotnet run --project pitfalls/Pitfalls -c Release --no-build -- shift > shift.txt
+          grep -q "^32 disks: 0 moves (int)$" <(tr -d '\r' < shift.txt)
+          grep -q "^64 disks: 0 moves (long)$" <(tr -d '\r' < shift.txt)
+          if dotnet run --project pitfalls/Pitfalls -c Release --no-build -- base-case-one 0 > bco.txt 2>&1; then
+            echo "no stack overflow"; exit 1
+          fi
+          grep -q "Stack overflow" bco.txt

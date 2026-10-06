@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/TowersOfHanoi/TowersOfHanoi.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/TowersOfHanoiTests/TowersOfHanoiTests.csproj" />
+  </Folder>
+  <Folder Name="/pitfalls/">
+    <Project Path="pitfalls/Pitfalls/Pitfalls.csproj" />
+  </Folder>
+</Solution>

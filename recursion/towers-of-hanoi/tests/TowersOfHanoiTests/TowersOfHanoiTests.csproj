@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MyCPlus.Recursion.Tests</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/TowersOfHanoi/TowersOfHanoi.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../expected/TowersOfHanoi.txt" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>
