@@ -13,6 +13,7 @@ C# source code examples accompanying programming tutorials on [MYCPLUS.com](http
 | [Merge Sort](sorting/merge-sort/) | Top-down merge sort with one buffer, stable | [![Merge Sort](https://github.com/mycplus/csharp-examples/actions/workflows/merge-sort.yml/badge.svg)](https://github.com/mycplus/csharp-examples/actions/workflows/merge-sort.yml) |
 | [Heap Sort](sorting/heap-sort/) | In-place heap sort with a max-heap stored in the array | [![Heap Sort](https://github.com/mycplus/csharp-examples/actions/workflows/heap-sort.yml/badge.svg)](https://github.com/mycplus/csharp-examples/actions/workflows/heap-sort.yml) |
 | [Towers of Hanoi](recursion/towers-of-hanoi/) | Recursive and iterative solvers, and any single move computed directly | [![Towers of Hanoi](https://github.com/mycplus/csharp-examples/actions/workflows/towers-of-hanoi.yml/badge.svg)](https://github.com/mycplus/csharp-examples/actions/workflows/towers-of-hanoi.yml) |
+| [Serpent](cryptography/serpent/) | The Serpent block cipher with spans, checked against 1,043 test vectors | [![serpent](https://github.com/mycplus/csharp-examples/actions/workflows/serpent.yml/badge.svg)](https://github.com/mycplus/csharp-examples/actions/workflows/serpent.yml) |
 
 ## License
 

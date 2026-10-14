@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MyCPlus.Cryptography.Tests</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/SerpentDemo/SerpentDemo.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../vectors/serpent_nessie.txt" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

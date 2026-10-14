@@ -1,0 +1,31 @@
+name: serpent
+
+on:
+  push:
+    paths: ['cryptography/serpent/**', '.github/workflows/serpent.yml']
+  pull_request:
+    paths: ['cryptography/serpent/**', '.github/workflows/serpent.yml']
+
+defaults:
+  run:
+    working-directory: cryptography/serpent
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Build (analyzer warnings are errors)
+        run: dotnet build Serpent.slnx -c Release
+      - name: All 1,043 test vectors and key and block validation
+        run: dotnet run --project tests/SerpentTests -c Release --no-build
+      - name: Demo prints the article's output
+        shell: bash
+        run: dotnet run --project src/SerpentDemo -c Release --no-build | diff --strip-trailing-cr - tests/expected/SerpentDemo.txt
